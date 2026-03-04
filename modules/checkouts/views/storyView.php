@@ -1,10 +1,15 @@
 <?php get_header(); ?>
 <?php 
 
-    if(!empty($_SESSION['success'])) 
-        {echo " <script type='text/javascript'> alert('Chúc mừng bạn đã đặt hàng thành công!!!');</script>";
-        unset($_SESSION['success']);}
-
+    if(!empty($_SESSION['success'])){
+        echo " <script type='text/javascript'> alert('Chúc mừng bạn đã đặt hàng thành công!!!');</script>";
+        unset($_SESSION['success']);
+    }
+    if(!empty($_SESSION['id_customer'])){
+        $id_customer = $_SESSION['id_customer'];
+    }else{
+        
+    }
  ?>
 <div id="main-content-wp" class="cart-page" style="padding-bottom: 500px;">
     <div class="section" id="breadcrumb-wp">

@@ -110,28 +110,77 @@
                         <tfoot>
                             <tr class="order-total">
                                 <td>Tổng đơn hàng:</td>
-                                <td><strong class="total-price"><?php if(isset($_SESSION['cart']['buy'])) echo $_SESSION['cart']['info']['total']." VND"; else echo "0 VND"; ?></strong></td>
+                                <td>
+                                <strong class="total-price">
+                                    <?php if(isset($_SESSION['cart']['buy'])) 
+                                            {$tong= $_SESSION['cart']['info']['total']; 
+                                            echo $tong." VND"; }
+                                            else {
+                                                $tong =0;
+                                                echo "VND";
+                                            } ?>
+                                
+                                </strong></td>
                             </tr>
                         </tfoot>
                     </table>
+                    
                     <div id="payment-checkout-wp">
                         <ul id="payment_methods">
+                            <!-- <li>
+                                <input type="radio" id="direct-payment" name="redirect" value="VNPAY">
+                                <label for="direct-payment">Thanh toán online VNpay</label>
+                            </li> -->
                             <li>
-                                <input type="radio" id="direct-payment" name="payment_method" value="card_payment">
-                                <label for="direct-payment">Thanh toán online</label>
+                                
                             </li>
                             <li>
-                                <input type="radio" id="payment-home" name="payment_method" value="home_payment">
-                                <label for="payment-home">Thanh toán tại nhà</label>
+                                <input type="hidden" id="payment-home" name="payment_method" value="home_payment">
+                                <!-- <label for="payment-home">Thanh toán tại nhà</label> -->
                             </li>
                         </ul>
                     </div>
-                    <div class="place-order-wp clearfix">
+                        
+                        <div class="place-order-wp clearfix">
                         <input type="submit" id="order-now" value="Đặt hàng" name="btn_submit">
                     </div>
+                    
                 </div>
+                <!-- <form action="./Xulypay.php" method=post>   
+                            <label for="payment-home">Thanh toán online</label>
+                            <input  type="submit" name="redirect" >
+                </form> -->
             </div>
 
+        </form>
+        <form action="./modules/checkouts/views/Xulypay.php" method="POST" 
+        >
+            <input type="hidden" name="amount" value="<?php echo $tong;?>">
+
+
+            <?php if(!empty($data)) { foreach ($data as  $value) {?>
+                        
+                                <input type="hidden" name="fullname" id="fullname" value="<?php echo $value['fullname']; ?>">
+                           
+                                <input type="hidden" name="email" id="email" value="<?php echo $value['mail']; ?>">
+                            
+                                <input type="hidden" name="address" id="address" value="<?php echo $value['address']; ?>">
+                            
+                                <input type="hidden" name="phone" id="phone" value="<?php echo $value['phone']; ?>">
+                          
+                    <?php }}else{echo("no data");}?>                                   
+
+
+            <button style="
+                    padding: 10px 15px;
+                    margin-left: 432px;
+                    border-top: solid 4px white;
+                    border-left: solid 4px white;
+                    color: white;
+                    padding-right: 16px;
+                    background-color: green;
+
+            " name="redirect">Thanh toán VNpay</button>
         </form>
 
     </div>

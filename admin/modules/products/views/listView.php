@@ -38,7 +38,7 @@
                         <table class="table list-table-wp">
                             <thead>
                                 <tr>
-                                    <td><input type="checkbox" name="checkAll" id="checkAll"></td>
+                                    <!-- <td><input type="checkbox" name="checkAll" id="checkAll"></td> -->
                                     <td><span class="thead-text">STT</span></td>
                                     <td><span class="thead-text">Mã sản phẩm</span></td>
                                     <td><span class="thead-text">Hình ảnh</span></td>
@@ -59,7 +59,7 @@
                                 <?php  $i=0; if(!empty($data['0'])) foreach ($data['0'] as $value) { $i++;?>
 
                                 <tr>
-                                    <td><input type="checkbox" name="checkItem" class="checkItem"></td>
+                                    <!-- <td><input type="checkbox" name="checkItem" class="checkItem"></td> -->
                                     <td><span class="tbody-text"><?php echo $i; ?></span></td>
                                     <td><span class="tbody-text"><?php echo $value['code']; ?></span></td>
                                     <td>

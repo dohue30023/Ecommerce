@@ -26,7 +26,7 @@
 }
 
 /*MAIN CONTENT*/
-#sidebar{ width: 18%; padding: 10px;}
+#sidebar{ }
 #content{ width: 82%; border-left: 1px solid #ddd; padding: 20px;}
 #add-new{
     display: inline-block;

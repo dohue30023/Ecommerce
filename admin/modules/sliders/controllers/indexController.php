@@ -14,7 +14,7 @@ function addAction() {
 
 	$user;
 	$type;
-	$image;
+	$image='';
 	$err = array();
 	if(!empty($_POST['btn_submit'])){
 
@@ -31,7 +31,7 @@ function addAction() {
 		}
 
 		// xxử lý ảnh
-		$target_dir = "public/uploads/";
+		$target_dir = "C:/xampp/htdocs/STORE/public/uploads";
 		$target_file = $target_dir . basename($_FILES["image"]["name"]);
 		$uploadOk = 1;
 		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -49,7 +49,7 @@ function addAction() {
 		  $uploadOk = 0;
 		}
 
-		if ($_FILES["image"]["size"] > 200000000) {
+		if ($_FILES["image"]["size"] > 2000000000) {
 		  $uploadOk = 0;
 		}
 
@@ -61,7 +61,7 @@ function addAction() {
 		if ($uploadOk == 0) {
 		} else {
 		  if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-		    $image = $target_dir. basename( $_FILES["image"]["name"]);
+		    $image ="public/uploads".basename($_FILES["image"]["name"]) ;
 		  } 
 		}
 		if(empty($err)){

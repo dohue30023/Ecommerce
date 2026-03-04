@@ -1,5 +1,5 @@
 <div class="sidebar fl-left">
-    <div class="section" id="category-product-wp">
+    <!-- <div class="section" id="category-product-wp">
         <div class="section-head">
             <h3 class="section-title">Danh mục sản phẩm</h3>
         </div>
@@ -8,7 +8,7 @@
                 <li>
                     <a href="?modules=products&controllers=index&action=show&id_cat=13" title="">Điện Thoại</a>
                     
-                </li>
+                </li> -->
                 <!-- <li>
                     <a href="?modules=products&controllers=index&action=show&id_cat=14" title="">Máy Tính Bảng</a>
                     
@@ -29,9 +29,9 @@
                 <li>
                     <a href="?page=category_product" title="">Thiết Bị Văn Phòng</a>
                 </li> -->
-            </ul>
+            <!-- </ul>
         </div>
-    </div>
+    </div> -->
     <div class="section" id="filter-product-wp">
         <div class="section-head">
             <h3 class="section-title">Bộ lọc</h3>
@@ -120,7 +120,7 @@
     <div class="section" id="banner-wp">
         <div class="section-detail">
             <a href="?page=detail_product" title="" class="thumb">
-                <img src="public/images/banner.png" alt="">
+                <!-- <img src="public/images/banner.png" alt=""> -->
             </a>
         </div>
     </div>

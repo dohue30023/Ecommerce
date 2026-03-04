@@ -6,9 +6,9 @@ function getUserById($id){
 }
 
 
-
 function getListOrder($id_customer){
 
+	$id_customer = $_SESSION['id_customer'];
 	return db_fetch_array("SELECT * FROM `tbl_order` WHERE `custom_id` = '$id_customer'");
 }
 

@@ -1,4 +1,4 @@
-<div id="sidebar" class="fl-left">
+<div id="sidebar" class="fl-left"  style="  padding: 0;">
     <ul id="sidebar-menu">
         <!-- <li class="nav-item">
             <a href="" title="" class="nav-link nav-toggle">
@@ -20,9 +20,9 @@
                 <span class="title">Bài Viết</span>
             </a>
             <ul class="sub-menu">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="?modules=blogs&controllers=index&action=add" title="" class="nav-link aha">Thêm mới</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a href="?modules=blogs&controllers=index&action=list" title="" class="nav-link aha">Danh sách</a>
                 </li>
@@ -30,7 +30,7 @@
         </li>
         <li class="nav-item">
             <a href="" title="" class="nav-link nav-toggle">
-                <span class="fa fa-product-hunt icon"></span>
+                <span class="fa fa-product-hunt icon "></span>
                 <span class="title">Sản Phẩm</span>
             </a>
             <ul class="sub-menu">
@@ -62,9 +62,9 @@
                 <span class="title">Thương Hiệu</span>
             </a>
             <ul class="sub-menu">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="?modules=brands&controllers=index&action=add" title="" class="nav-link aha" >Thêm mới</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a href="?modules=brands&controllers=index&action=list" title="" class="nav-link aha">Danh sách</a>
                 </li>

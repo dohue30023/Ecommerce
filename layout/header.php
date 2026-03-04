@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>LOCAL STORE</title>
+        <title>EKKA</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="public/css/bootstrap/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
@@ -38,7 +38,9 @@
                                     <li>
                                         <a href="?modules=contacts&action=contact" title="">Liên hệ</a>
                                     </li>
-
+                                    <!-- <li>
+                                        <a href="?modules=checkouts&controllers=index&action=story" title="">Lịch sử mua hàng</a>
+                                    </li> -->
                                     <li>
                                         <a href="?modules=users&action=index" title=""><?php if(!empty($_SESSION['fullname'])) echo $_SESSION['fullname'];else echo "Tài khoản"; ?></a>
                                     </li>

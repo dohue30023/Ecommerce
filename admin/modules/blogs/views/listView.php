@@ -57,7 +57,7 @@
                                     <td><span class="tbody-text"><?php echo $value['create_date']; ?></span></td>
                                     <td>
                                         <ul class="list-operation ">
-                                            <li><a href="?modules=blogs&controllers=index&action=edit&id=<?php echo $value['id']; ?>" title="Sửa" class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+                                            <!-- <li><a href="?modules=blogs&controllers=index&action=edit&id=<?php echo $value['id']; ?>" title="Sửa" class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></a></li> -->
                                             <li><a href="?modules=blogs&controllers=index&action=delete&id=<?php echo $value['id']; ?>" title="Xóa" class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a></li>
                                         </ul>
                                     </td>

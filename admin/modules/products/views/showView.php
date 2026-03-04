@@ -88,7 +88,7 @@ if (isset($_GET['id'])) {
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
-                    <h3 id="index" class="fl-left">Sửa danh sản phẩm</h3>
+                    <h3 id="index" class="fl-left">Sửa sản phẩm</h3>
                 </div>
             </div>
             <div class="section" id="detail-page">

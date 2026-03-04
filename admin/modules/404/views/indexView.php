@@ -39,7 +39,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             </div>
         </div>
         <div class="copyright login-copyright error-copyright">
-           <p>© 2016 Baxster . All Rights Reserved . Design by <a href="http://w3layouts.com/">W3layouts</a></p>    
+           <p>© 2023 <a href="http://w3layouts.com/"></a></p>    
         </div>
 </body>
 </html>

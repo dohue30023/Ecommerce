@@ -1,6 +1,6 @@
 <div id="footer-wp">
     <div class="wp-inner">
-        <p id="copyright">2023 © MANAGER LOCALSTORE</p>
+        <p id="copyright">2026 © MANAGER LOCALSTORE</p>
     </div>
 </div>
 </div>

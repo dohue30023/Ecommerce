@@ -1,6 +1,6 @@
         <div class="sidebar fl-left">
             <div class="section" id="category-product-wp">
-                <div class="section-head">
+                 <div class="section-head">
                     <h3 class="section-title">Danh mục sản phẩm</h3>
                 </div>
                 <div class="secion-detail">
@@ -21,7 +21,7 @@
                                     <a href="?page=category_product" title="">Bphone</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> 
                         <!-- <li>
                             <a href="?modules=products&controllers=index&action=show&id_cat=14" title="">Máy Tính Bảng</a>
                             <ul class="sub-menu">
@@ -68,8 +68,8 @@
                         <li>
                             <a href="?modules=home" title="">Thiết Bị Văn Phòng</a>
                         </li> -->
-                    </ul>
-                </div>
+                     </ul>
+                </div> 
             </div>
             <div class="section" id="selling-wp">
                 <div class="section-head">

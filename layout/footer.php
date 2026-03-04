@@ -2,8 +2,8 @@
     <div id="foot-body">
         <div class="wp-inner clearfix">
             <div class="block" id="info-company">
-                <h3 class="title">LOCALSTORE</h3>
-                <p class="desc">LOCALSTORE luôn cung cấp luôn là sản phẩm chính hãng có thông tin rõ ràng, chính sách ưu đãi cực lớn cho khách hàng có thẻ thành viên.</p>
+                <h3 class="title">Ekka</h3>
+                <p class="desc">Ekka luôn cung cấp luôn là sản phẩm chính hãng có thông tin rõ ràng, chính sách ưu đãi cực lớn cho khách hàng có thẻ thành viên.</p>
                 <div id="payment">
                     <div class="thumb">
                         <img src="public/images/img-foot.png" alt="">
@@ -14,13 +14,13 @@
                 <h3 class="title">Thông tin cửa hàng</h3>
                 <ul class="list-item">
                     <li>
-                        <p>68 - Phú Diễn - Bắc Từ Liêm - Hà Nội</p>
+                        <p> Bắc Từ Liêm - Hà Nội</p>
                     </li>
                     <li>
                         <p>0848.454.796 - 0822.225.286</p>
                     </li>
                     <li>
-                        <p> Nhom4@gmail.com</p>
+                        <p> hue@gmail.com</p>
                     </li>
                 </ul>
             </div>
@@ -55,13 +55,13 @@
     </div>
     <div id="foot-bot">
         <div class="wp-inner">
-            <p id="copyright">© Bản quyền thuộc về NHOM4 | LOCALSTORE</p>
+            <p id="copyright">© Bản quyền thuộc về | Ekka</p>
         </div>
     </div>
 </div>
 </div>
 <div id="menu-respon">
-    <a href="?page=home" title="" class="logo">LOCALSTORE</a>
+    <a href="?page=home" title="" class="logo">Ekka</a>
     <div id="menu-respon-wp">
         <ul class="" id="main-menu-respon">
             <li>

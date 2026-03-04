@@ -76,16 +76,16 @@
                     </thead>
                     <tbody>
                         <tr class="cart-item">
-                            <td class="product-name">935 W. Webster Ave New Streets Chicago, IL 60614, NYNewyork USA<strong class="product-quantity">x 1</strong></td>
+                            <td class="product-name">68 Phú Diễn - Bắc Từ Liêm - Hà Nội<strong class="product-quantity">x 1</strong></td>
                         </tr>
                         <tr class="cart-item">
-                            <td class="product-name">Mobile: +2346 17 38 93<strong class="product-quantity">x 2</strong></td>
+                            <td class="product-name">Mobile: +84 2222 5286<strong class="product-quantity">x 2</strong></td>
                         </tr>
                         <tr class="cart-item">
-                            <td class="product-name">Fax: 1-714-252-0026<strong class="product-quantity">x 2</strong></td>
+                            <td class="product-name">Fax: 123 456 789<strong class="product-quantity">x 2</strong></td>
                         </tr>
                         <tr class="order-total">
-                            <td><strong class="total-price">Email: info@e-shopper.com</strong></td>
+                            <td><strong class="total-price">Email: 21111065662@gmail.com</strong></td>
                         </tr>
                     </tbody>
                     <tfoot>
@@ -97,7 +97,7 @@
                         		<strong class="total-price">
                         			<ul>
 										<li style="display: inline-block; padding: 0px 20px; font-size: 50px;">
-											<a style="color:gray;" href="https://www.facebook.com/anhtruongnd210198/"><i class="fa fa-facebook"></i></a>
+											<a style="color:gray;" href="https://web.facebook.com/quangem2703"><i class="fa fa-facebook"></i></a>
 										</li >
 										<li style="display: inline-block;padding: 0px 20px;font-size: 50px;">
 											<a style="color:gray;" href="#"><i class="fa fa-twitter"></i></a>
@@ -106,7 +106,7 @@
 											<a style="color:gray;" href="#"><i class="fa fa-google-plus"></i></a>
 										</li>
 										<li style="display: inline-block;padding: 0px 20px;font-size: 50px;">
-											<a style="color:gray;" href="https://www.youtube.com/watch?v=di7QjvmmNGg"><i  class="fa fa-youtube"></i></a>
+											<a style="color:gray;" href="https://www.youtube.com/"><i  class="fa fa-youtube"></i></a>
 										</li>
 									</ul>
                         		</strong>

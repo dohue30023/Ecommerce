@@ -55,14 +55,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<input type="submit" name="SignIn" value="Login">
 					<hr>
-					<div class="login-icons">
+					<!-- <div class="login-icons">
 						<ul>
 							<li><a href="https://www.facebook.com/" class="facebook"><i class="fa fa-facebook"></i></a></li>
 							<li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
 							<li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
 							<li><a href="#" class="dribbble"><i class="fa fa-dribbble"></i></a></li>
 						</ul>
-					</div>
+					</div> -->
 				</form>
 			</div>
 		</div>
@@ -70,7 +70,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 				<a href="?modules=users&controller=index&action=login">Go To Home</a>
 			</div>
 		<div class="copyright login-copyright">
-           <p>© 2020 TRUONG TRAN <a href="http://w3layouts.com/">HAILUA.ND</a></p>    
+           <p>© 2026 Nhóm 4 </p>    
 		</div>
 </body>
 </html>

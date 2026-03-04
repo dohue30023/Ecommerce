@@ -19,7 +19,7 @@
 
                         <div style=" display: flex;">
                             <div style="width: 400px;">
-                                <label for="product-name">Tên sản phẩm</label>
+                                <label for="product-name">Tên sản phẩmmở chỗ để import thương thức đấy đi</label>
                                 <input type="text" name="name" id="product-name" style="display: block;width: 300px;">
                                 <label for="product-code">Mã sản phẩm</label>
                                 <input type="text" name="code" id="product-code" style="display: block;width: 300px;">

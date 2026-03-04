@@ -36,8 +36,12 @@ function addByNowAction(){
 function showAction(){
 
 	if (!empty($_SESSION['id_customer'])) {
-		$_SESSION['cart']['info']['id_customer'] = $_SESSION['id_customer'];
-		getCartByCustomer($_SESSION['id_customer']);
+		if(!empty($_SESSION['cart']['info']['id_customer'])){
+			$_SESSION['cart']['info']['id_customer'] = $_SESSION['id_customer'];
+			getCartByCustomer($_SESSION['id_customer']);
+		}else{
+			echo("Bạn chưa đăng nhập, vui lòng đăng nhập vào đeee!");
+		}
 	}
 	load_view('index');
 }

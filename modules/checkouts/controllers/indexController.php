@@ -26,8 +26,12 @@ function indexAction(){
 
 function storyAction(){
 	$data = array();
-	if(!empty($_SESSION['id_customer']))
-	$data = getListOrder($_SESSION['id_customer']);
+	if(!empty($_SESSION['id_customer'])){
+		$data = getListOrder($_SESSION['id_customer']);
+	}
+	else{
+		echo('<script>alert("Bạn vui lòng đăng nhập");</script>');
+	}
 	load_view('story',$data);
 
 }
@@ -60,9 +64,11 @@ function detailStoryAction(){
 function checkoutAction(){
 
 	if(!empty($_POST['btn_submit'])){
+
 		
 			if(isset($_SESSION['id_customer'])){
-
+				
+				
 				if(!empty($_POST['payment_method']) && !empty($_SESSION['cart']['buy'])){
 
 					$custom_id = $_SESSION['id_customer'];
@@ -87,6 +93,19 @@ function checkoutAction(){
 						inserOderDetail($id_order , $value['id'] , $value['qty'], $value['sub_total']);
 					}
 
+					// if ($_POST['redirect'] === 'VNPAY') {
+						
+					// 	// Redirect to VNPay processing page
+					// 	header('Location: modules/checkouts/views/Xulypay.php?id=' . $id_order);
+					// 	exit; // Add this line to stop executing the remaining code
+					// }
+					// if ($_POST['payment_method'] === 'VNPAY') {
+						
+					// 	// Redirect to VNPay processing page
+					// 	header('Location: modules/checkouts/views/Xulypay.php?id=' . $id_order);
+					// 	exit; // Add this line to stop executing the remaining code
+					// }
+
 					/// hàm send mail đơn hàng
 					sendMail($id_order);
 					
@@ -96,7 +115,8 @@ function checkoutAction(){
 					unset($_SESSION['cart']['buy']);
 					$_SESSION['success'] = true;
 
-
+					/// chuyen huong vnpay
+					
 					header('location: ?modules=checkouts&controllers=index&action=story');
 
 				}
@@ -106,6 +126,11 @@ function checkoutAction(){
 							$_SESSION['messBuy'] = true;
 						header('location: ?modules=checkouts&controllers=index&action=index');
 					}
+				else if(!empty($_POST['payment_VNPay']) &&empty($_SESSION['cart']['buy'])){
+
+						
+					header('location: fb.com');
+				}
 					
 				else {
 					$_SESSION['messa'] = true;

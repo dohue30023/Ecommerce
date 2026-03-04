@@ -164,10 +164,12 @@ function addAction() {
 		}
 
 		////// ảnh
-		$target_dir = "public/uploads/";
+		$target_dir = "C:/xampp/htdocs/STORE/public/uploads/";
 		$target_file = $target_dir . basename($_FILES["image"]["name"]);
 		$uploadOk = 1;
 		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+		$target_dir1 = "public/uploads/";
+		$target_file1 = $target_dir1 . basename($_FILES["image"]["name"]);
 
 		if(isset($_POST["submit"])) {
 		  $check = getimagesize($_FILES["image"]["tmp_name"]);
@@ -193,10 +195,17 @@ function addAction() {
 
 		if ($uploadOk == 0) {
 		} else {
-		  if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-		    $image = $target_file;
+		  if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file) ) {
+		    $image ="public/uploads/".basename($_FILES["image"]["name"]) ;
 		  } 
+		  
 		}
+		// if(copy($target_dir . basename($_FILES["image"]["name"]), $target_dir1)){
+		// 	echo " <script type='text/javascript'> alert('copy thành công');</script>";
+		// }else{
+		// 	echo " <script type='text/javascript'> alert('copy khong thành công');</script>";
+		// }
+
 		if(empty($err)){
 		$create_date = date("d/m/Y",time());
 		$res = [
