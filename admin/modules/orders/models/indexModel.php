@@ -10,6 +10,11 @@ function getAllOrder(){
 	return db_fetch_array("SELECT * FROM `tbl_order` WHERE `status` ='Thành công'");
 }
 
+function searchOrderByCode($keyword){
+	$keyword = escape_string($keyword);
+	return db_fetch_array("SELECT * FROM `tbl_order` WHERE `status` ='Thành công' AND `code` LIKE '%$keyword%'");
+}
+
 
 
 function getAllDetailOrderNo($id_order){

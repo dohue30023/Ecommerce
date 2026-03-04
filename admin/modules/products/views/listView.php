@@ -12,14 +12,14 @@
             <div class="section" id="detail-page">
                 <div class="section-detail">
                     <div class="filter-wp clearfix">
-                        <ul class="post-status fl-left">
-                            <li class="all"><a href="">Tất cả <span class="count">(69)</span></a> |</li>
-                            <li class="publish"><a href="">Đã đăng <span class="count">(51)</span></a> |</li>
-                            <li class="pending"><a href="">Chờ xét duyệt<span class="count">(0)</span> |</a></li>
-                            <li class="pending"><a href="">Thùng rác<span class="count">(0)</span></a></li>
+                        <ul class="fl-left post-status">
+                            <li class="all"><a href="?modules=products&controllers=index&action=list">Tất cả <span class="count">(<?php echo count(getAllProduct()); ?>)</span></a></li>
                         </ul>
-                        <form method="GET" class="form-s fl-right">
-                            <input type="text" name="s" id="s">
+                        <form method="GET" class="fl-right form-s">
+                            <input type="hidden" name="modules" value="products">
+                            <input type="hidden" name="controllers" value="index">
+                            <input type="hidden" name="action" value="list">
+                            <input type="text" name="s" id="s" value="<?php echo isset($data['3']) ? htmlspecialchars($data['3']) : ''; ?>" placeholder="Tìm theo tên sản phẩm...">
                             <input type="submit" name="sm_s" value="Tìm kiếm">
                         </form>
                     </div>
@@ -78,9 +78,9 @@
                                     <td><span class="tbody-text"><?php echo $value['user']; ?></span></td>
                                     <td><span class="tbody-text"><?php echo $value['create_date']; ?></span></td>
                                     <td>
-                                        <ul class="list-operation ">
+                                        <ul class="list-operation">
                                             <li><a href="?modules=products&controllers=index&action=show&id=<?php echo $value['id'] ;?>" title="Sửa" class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
-                                            <li><a href="?modules=products&controllers=index&action=delete&id=<?php echo $value['id'] ;?>" title="Xóa" class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a></li>
+                                            <li><a href="?modules=products&controllers=index&action=delete&id=<?php echo $value['id'] ;?>" title="Xóa" class="delete" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')"><i class="fa fa-trash" aria-hidden="true"></i></a></li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -98,7 +98,7 @@
                     <ul id="list-paging" class="fl-right">
                         <?php for ($i=1; $i <= $data['1'] ; $i++) { ?>
                         <li>
-                            <a <?php if($i == $data['2']) echo 'style="background-color: green; color:white; border-radius:300px;"';  ?>  href="?modules=products&controllers=index&action=list&page=<?php echo $i; ?>" title=""><?php echo $i; ?></a>
+                            <a <?php if($i == $data['2']) echo 'style="background-color: green; color:white; border-radius:300px;"';  ?>  href="?modules=products&controllers=index&action=list&page=<?php echo $i; ?><?php echo !empty($data['3']) ? '&s='.urlencode($data['3']) : ''; ?>" title=""><?php echo $i; ?></a>
                         </li>
                         <?php }; ?>
                     </ul>

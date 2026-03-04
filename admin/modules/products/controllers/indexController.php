@@ -253,7 +253,13 @@ function addAction() {
 
 function listAction() {
 
-	$data_tmp = getAllProduct();
+	$keyword = '';
+	if(!empty($_GET['s'])){
+		$keyword = trim($_GET['s']);
+		$data_tmp = searchProductByName($keyword);
+	} else {
+		$data_tmp = getAllProduct();
+	}
 
 	for ($i=0; $i <count($data_tmp) ; $i++) {
 		
@@ -262,10 +268,6 @@ function listAction() {
 	};
 
 	//phân trang//////////////////////////////////////////////////
-	//$id_cat = $_GET['id_cat'];
-	// $name = getNameCatById($id_cat);
-	// $data_tmp = getAllByIDCat($id_cat);
-	// $id =$id_cat;
 	$page;
 	if(!empty($_GET['page'])){
 		$page = $_GET['page'];
@@ -286,7 +288,7 @@ function listAction() {
         $res[] = $data_tmp[$i];
 	};
 
-	$data = [$res, $num, $page];
+	$data = [$res, $num, $page, $keyword];
 	////////////////////////////////////////////////////////////////
 	load_view('list',$data);
 }
@@ -295,6 +297,9 @@ function listAction() {
 function deleteAction() {
 
 	$id = $_GET['id'];
-	delete_product_by_id($id);
-	header('location:?modules=products&controllers=index&action=list');
+	if(delete_product_by_id($id)){
+		echo "<script type='text/javascript'> alert('Xóa sản phẩm thành công'); window.location.href='?modules=products&controllers=index&action=list';</script>";
+	}else{
+		echo "<script type='text/javascript'> alert('Xóa sản phẩm thất bại'); window.location.href='?modules=products&controllers=index&action=list';</script>";
+	}
 }

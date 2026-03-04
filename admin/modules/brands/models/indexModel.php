@@ -9,6 +9,11 @@ function getAll() {
 	return db_fetch_array("SELECT * FROM `tbl_brand`");
 }
 
+function searchBrandByName($keyword){
+	$keyword = escape_string($keyword);
+	return db_fetch_array("SELECT * FROM `tbl_brand` WHERE `name` LIKE '%$keyword%' OR `code` LIKE '%$keyword%'");
+}
+
 function insert_category($data){
 
 	return db_insert("tbl_brand", $data);

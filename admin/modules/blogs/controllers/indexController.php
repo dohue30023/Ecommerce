@@ -136,8 +136,11 @@ function addAction() {
 
 function deleteAction() {
 	$id = $_GET['id'];
-	delete_blog_by_id($id);
-	header('location:?modules=blogs&controllers=index&action=list');
+	if(delete_blog_by_id($id)){
+		echo "<script type='text/javascript'> alert('Xóa bài viết thành công'); window.location.href='?modules=blogs&controllers=index&action=list';</script>";
+	}else{
+		echo "<script type='text/javascript'> alert('Xóa bài viết thất bại'); window.location.href='?modules=blogs&controllers=index&action=list';</script>";
+	}
 }
 
 function editAction() {
@@ -145,7 +148,14 @@ function editAction() {
 }
 
 function listAction(){
-	$data_tmp = getAll();
+	$keyword = '';
+	if(!empty($_GET['s'])){
+		$keyword = trim($_GET['s']);
+		$data_tmp = searchBlogByTitle($keyword);
+	} else {
+		$data_tmp = getAll();
+	}
+
 // phan trang
 	$page;
 	if(!empty($_GET['page'])){
@@ -167,6 +177,6 @@ function listAction(){
         $res[] = $data_tmp[$i];
 	};
 
-	$data = [$res, $num, $page];
-	load_view('list',$data);;
+	$data = [$res, $num, $page, $keyword];
+	load_view('list',$data);
 }

@@ -96,13 +96,21 @@ function addAction() {
 function deleteAction() {
 
 	$id = $_GET['id'];
-	delete_slider_by_id($id);
-	header('location:?modules=sliders&controllers=index&action=list');
-
+	if(delete_slider_by_id($id)){
+		echo "<script type='text/javascript'> alert('Xóa slider thành công'); window.location.href='?modules=sliders&controllers=index&action=list';</script>";
+	}else{
+		echo "<script type='text/javascript'> alert('Xóa slider thất bại'); window.location.href='?modules=sliders&controllers=index&action=list';</script>";
+	}
 }
 
 function listAction() {
-	$data_tmp = getAllSlider();
+	$keyword = '';
+	if(!empty($_GET['s'])){
+		$keyword = trim($_GET['s']);
+		$data_tmp = searchSliderByType($keyword);
+	} else {
+		$data_tmp = getAllSlider();
+	}
 
 	$page;
 	if(!empty($_GET['page'])){
@@ -124,6 +132,6 @@ function listAction() {
         $res[] = $data_tmp[$i];
 	};
 
-	$data = [$res, $num, $page];
+	$data = [$res, $num, $page, $keyword];
 	load_view('list',$data);
 }

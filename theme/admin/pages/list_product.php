@@ -11,13 +11,13 @@
             <div class="section" id="detail-page">
                 <div class="section-detail">
                     <div class="filter-wp clearfix">
-                        <ul class="post-status fl-left">
+                        <ul class="fl-left post-status">
                             <li class="all"><a href="">Tất cả <span class="count">(69)</span></a> |</li>
                             <li class="publish"><a href="">Đã đăng <span class="count">(51)</span></a> |</li>
                             <li class="pending"><a href="">Chờ xét duyệt<span class="count">(0)</span> |</a></li>
                             <li class="pending"><a href="">Thùng rác<span class="count">(0)</span></a></li>
                         </ul>
-                        <form method="GET" class="form-s fl-right">
+                        <form method="GET" class="fl-right form-s">
                             <input type="text" name="s" id="s">
                             <input type="submit" name="sm_s" value="Tìm kiếm">
                         </form>
@@ -60,10 +60,10 @@
                                         </div>
                                     </td>
                                     <td class="clearfix">
-                                        <div class="tb-title fl-left">
+                                        <div class="fl-left tb-title">
                                             <a href="" title="">Quần Âu nam vải trơn</a>
                                         </div>
-                                        <ul class="list-operation fl-right">
+                                        <ul class="fl-right list-operation">
                                             <li><a href="" title="Sửa" class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
                                             <li><a href="" title="Xóa" class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a></li>
                                         </ul>
@@ -84,10 +84,10 @@
                                         </div>
                                     </td>
                                     <td class="clearfix">
-                                        <div class="tb-title fl-left">
+                                        <div class="fl-left tb-title">
                                             <a href="" title="">Quần Âu nam vải trơn</a>
                                         </div>
-                                        <ul class="list-operation fl-right">
+                                        <ul class="fl-right list-operation">
                                             <li><a href="" title="Sửa" class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
                                             <li><a href="" title="Xóa" class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a></li>
                                         </ul>
@@ -108,10 +108,10 @@
                                         </div>
                                     </td>
                                     <td class="clearfix">
-                                        <div class="tb-title fl-left">
+                                        <div class="fl-left tb-title">
                                             <a href="" title="">Quần Âu nam vải trơn</a>
                                         </div>
-                                        <ul class="list-operation fl-right">
+                                        <ul class="fl-right list-operation">
                                             <li><a href="" title="Sửa" class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
                                             <li><a href="" title="Xóa" class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a></li>
                                         </ul>
@@ -132,10 +132,10 @@
                                         </div>
                                     </td>
                                     <td class="clearfix">
-                                        <div class="tb-title fl-left">
+                                        <div class="fl-left tb-title">
                                             <a href="" title="">Quần Âu nam vải trơn</a>
                                         </div>
-                                        <ul class="list-operation fl-right">
+                                        <ul class="fl-right list-operation">
                                             <li><a href="" title="Sửa" class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
                                             <li><a href="" title="Xóa" class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a></li>
                                         </ul>

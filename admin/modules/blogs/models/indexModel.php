@@ -10,6 +10,12 @@ function getAll() {
 
 	return db_fetch_array("SELECT * FROM `tbl_blog`");
 }
+
+function searchBlogByTitle($keyword){
+	$keyword = escape_string($keyword);
+	return db_fetch_array("SELECT * FROM `tbl_blog` WHERE `title` LIKE '%$keyword%'");
+}
+
 function delete_blog_by_id($id){
 
 	return db_delete("tbl_blog", "`id` = '$id'");

@@ -15,7 +15,13 @@ function indexAction() {
 
 
 function listAction() {
-	$data_tmp = getAllOrder();
+	$keyword = '';
+	if(!empty($_GET['s'])){
+		$keyword = trim($_GET['s']);
+		$data_tmp = searchOrderByCode($keyword);
+	} else {
+		$data_tmp = getAllOrder();
+	}
 	foreach ($data_tmp as $key => $value) {
 		$data_tmp[$key]['fullname'] = getNameCus($data_tmp[$key]['custom_id']);
 	}
@@ -39,7 +45,7 @@ function listAction() {
 		if(isset($data_tmp[$i]))
         $res[] = $data_tmp[$i];
 	};
-	$data = [$res, $num, $page];
+	$data = [$res, $num, $page, $keyword];
 	load_view('list',$data);
 
 

@@ -111,7 +111,14 @@ function addAction() {
 
 function listAction() {
 
-	$data_tmp = getAll();
+	$keyword = '';
+	if(!empty($_GET['s'])){
+		$keyword = trim($_GET['s']);
+		$data_tmp = searchBrandByName($keyword);
+	} else {
+		$data_tmp = getAll();
+	}
+
 	// phaan trang
 	$page;
 	if(!empty($_GET['page'])){
@@ -133,15 +140,26 @@ function listAction() {
         $res[] = $data_tmp[$i];
 	};
 
-	$data = [$res, $num, $page];
+	$data = [$res, $num, $page, $keyword];
 	load_view('list',$data);
 }
 
 function deleteAction() {
 
 	$id = $_GET['id'];
-	delete_category_by_id($id);
-	header('location:?modules=brands&controllers=index&action=list');
+	// Xóa sản phẩm liên quan trong tbl_detail_order trước, rồi xóa sản phẩm thuộc thương hiệu
+	$products = db_fetch_array("SELECT `id` FROM `tbl_product` WHERE `id_brand` = '$id'");
+	if(!empty($products)){
+		foreach($products as $product){
+			db_delete("tbl_detail_order", "`id_product` = '".$product['id']."'");
+		}
+		db_delete("tbl_product", "`id_brand` = '$id'");
+	}
+	if(delete_category_by_id($id)){
+		echo "<script type='text/javascript'> alert('Xóa thương hiệu thành công'); window.location.href='?modules=brands&controllers=index&action=list';</script>";
+	}else{
+		echo "<script type='text/javascript'> alert('Xóa thương hiệu thất bại'); window.location.href='?modules=brands&controllers=index&action=list';</script>";
+	}
 }
 
 

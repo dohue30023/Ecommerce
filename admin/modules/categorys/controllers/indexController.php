@@ -111,19 +111,15 @@ function addAction() {
 
 function listAction() {
 
-	$data_tmp = getAll();
-
-	// for ($i=0; $i <count($data_tmp) ; $i++) {
-		
-	// 	$data_tmp[$i]['category'] = get_category_by_id($data_tmp[$i]['id']);
-	// 	//$data_tmp[$i]['brand']  = get_brand_by_id($data_tmp[$i]['id_brand']) ;
-	// };
+	$keyword = '';
+	if(!empty($_GET['s'])){
+		$keyword = trim($_GET['s']);
+		$data_tmp = searchCategoryByName($keyword);
+	} else {
+		$data_tmp = getAll();
+	}
 
 	//phân trang//////////////////////////////////////////////////
-	//$id_cat = $_GET['id_cat'];
-	// $name = getNameCatById($id_cat);
-	// $data_tmp = getAllByIDCat($id_cat);
-	// $id =$id_cat;
 	$page;
 	if(!empty($_GET['page'])){
 		$page = $_GET['page'];
@@ -144,15 +140,18 @@ function listAction() {
         $res[] = $data_tmp[$i];
 	};
 
-	$data = [$res, $num, $page];
+	$data = [$res, $num, $page, $keyword];
 	load_view('list',$data);
 }
 
 function deleteAction() {
 
 	$id = $_GET['id'];
-	delete_category_by_id($id);
-	header('location:?modules=categorys&controllers=index&action=list');
+	if(delete_category_by_id($id)){
+		echo "<script type='text/javascript'> alert('Xóa danh mục thành công'); window.location.href='?modules=categorys&controllers=index&action=list';</script>";
+	}else{
+		echo "<script type='text/javascript'> alert('Xóa danh mục thất bại'); window.location.href='?modules=categorys&controllers=index&action=list';</script>";
+	}
 }
 
 

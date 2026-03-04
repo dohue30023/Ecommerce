@@ -4,7 +4,7 @@
 $request_path = MODULESPATH . DIRECTORY_SEPARATOR . get_module() . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . get_controller().'Controller.php';
 
 
-if(empty($_SESSION['is_login']) && $_GET['action'] != 'login')
+if(empty($_SESSION['is_login']) && (empty($_GET['action']) || $_GET['action'] != 'login'))
 	header('location:?modules=users&controller=index&action=login');
 
 
