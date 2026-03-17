@@ -26,7 +26,7 @@ function listAction() {
 		$data_tmp[$key]['fullname'] = getNameCus($data_tmp[$key]['custom_id']);
 	}
 // phan trang
-	$page;
+	$page =1 ;
 	if(!empty($_GET['page'])){
 		$page = $_GET['page'];
 	}else{
@@ -61,7 +61,7 @@ function listNoAction() {
 	}
 	
 // phan trang
-	$page;
+	$page =1;
 	if(!empty($_GET['page'])){
 		$page = $_GET['page'];
 	}else{

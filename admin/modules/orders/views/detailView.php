@@ -73,7 +73,7 @@
                             <?php } }; ?>
                             </tbody>
                         </table>
-                        <hr>;
+                        <hr>
                     </div>
                 </div>
             </div>

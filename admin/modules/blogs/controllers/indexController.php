@@ -15,96 +15,86 @@ function addAction() {
 	$create_date;
 	$description;
 	$image="";
-	$err = '';
+	$errors = array();
+
 	if(!empty($_POST['btn_submit'])){
 
 		if(!empty($_POST['title'])){
 			$title = $_POST['title'];
 		}else{
-			$err ="title không được rỗng";		
-			echo "<script type='text/javascript'> alert(" . json_encode($err). "); </script>";
+			$errors[] = 'title không được rỗng';
 		}
 
 		if(!empty($_POST['user'])){
 			$user = $_POST['user'];
 		}else{
-			$err ="user không được rỗng";		
-			echo "<script type='text/javascript'> alert(" . json_encode($err). "); </script>";
+			$errors[] = 'user không được rỗng';
 		}
 
 		if(!empty($_POST['content'])){
 			$content = $_POST['content'];
 		}else{
-			$err ="content không được rỗng";		
-			echo "<script type='text/javascript'> alert(" . json_encode($err). "); </script>";
+			$errors[] = 'content không được rỗng';
 		}
 
 		if(!empty($_POST['description'])){
 			$description = $_POST['description'];
 		}else{
-			$err ="description không được rỗng";		
-			echo "<script type='text/javascript'> alert(" . json_encode($err). "); </script>";
+			$errors[] = 'description không được rỗng';
 		}
 
-		// check ảnh
-			$target_dir = "C:/xampp/htdocs/STORE/public/uploads/";
+		// check ảnh (image upload validation)
+			$target_dir = "C:/xampp/htdocs/Test/STORE/public/uploads/";
 			$target_file = $target_dir . basename($_FILES["image"]["name"]);
 			$uploadOk = 1;
-			$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+			$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-			
-			  $check = getimagesize($_FILES["image"]["tmp_name"]);
-			  if($check !== false) {
-			    $uploadOk = 1;
-				
-			  } else {
-			    $uploadOk = 0;
-				
-			  }
-			
+			if (!isset($_FILES["image"]) || $_FILES["image"]["error"] == UPLOAD_ERR_NO_FILE) {
+				$errors[] = 'Vui lòng chọn ảnh.';
+				$uploadOk = 0;
+			} else {
+				$check = getimagesize($_FILES["image"]["tmp_name"]);
+				if ($check === false) {
+					$errors[] = 'Tập tin không phải là ảnh.';
+					$uploadOk = 0;
+				}
 
-			if (file_exists($target_file)) {
-			  $uploadOk = 0;
-			  $err='0';
-				echo "<script type='text/javascript'> alert(" . json_encode($err). "); </script>";
-			}else{
-				$err='dvjdsvd';
-				echo "<script type='text/javascript'> alert(" . json_encode($err). "); </script>";
-			}
+				if (file_exists($target_file)) {
+					$errors[] = 'Ảnh đã tồn tại trên server.';
+					$uploadOk = 0;
+				}
 
-			if ($_FILES["image"]["size"] > 200000000) {
-			  $uploadOk = 0;
-			}else{
-				$err='qkdvkilidsnkvndslk';
-				echo "<script type='text/javascript'> alert(" . json_encode($err). "); </script>";
-			}
+				if ($_FILES["image"]["size"] > 200000000) {
+					$errors[] = 'Kích thước ảnh quá lớn.';
+					$uploadOk = 0;
+				}
 
-			if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-			&& $imageFileType != "gif" ) {
-			  $uploadOk = 0;
-			}else{
-				$err='qbsdckdsbfchdsvvhdsb';
-				echo "<script type='text/javascript'> alert(" . json_encode($err). "); </script>";
+				$allowed = array('jpg', 'png', 'jpeg', 'gif');
+				if (!in_array($imageFileType, $allowed)) {
+					$errors[] = 'Chỉ chấp nhận định dạng JPG, JPEG, PNG, GIF.';
+					$uploadOk = 0;
+				}
 			}
 
 			if ($uploadOk == 0) {
-				$err='lôix';
-				echo "<script type='text/javascript'> alert(" . json_encode($err). "); </script>";
+				// do nothing here; errors collected
 			} else {
-			    if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-					$image ="public/uploads/".basename($_FILES["image"]["name"]) ;
-				}else{
-					$err= "upfail";
-					echo "<script type='text/javascript'> alert(" . json_encode($err). "); </script>";
-
+				if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+					$image = "public/uploads/" . basename($_FILES["image"]["name"]);
+				} else {
+					$errors[] = 'Không thể lưu ảnh lên server.';
 				}
 			}
-			
-			if(empty($image)){
-				$err = "image không được rỗng";
+
+			if (empty($image)) {
+				$errors[] = 'image không được rỗng';
 			}
-			echo "<script type='text/javascript'> alert(" . json_encode($err). "); </script>";
-		if($err==''){
+
+			if (!empty($errors)) {
+				echo "<script type='text/javascript'> alert(" . json_encode(implode("\\n", $errors)) . "); </script>";
+			}
+
+		if (empty($errors)) {
 		$create_date = date("d/m/Y",time());
 		$data = [
 			'title' =>$title,

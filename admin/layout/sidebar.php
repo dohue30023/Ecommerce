@@ -80,7 +80,7 @@
                     <a href="?modules=orders&controllers=index&action=listNo" title="" class="nav-link aha">Danh sách đơn hàng cần xử lý</a>
                 </li>
                 <li class="nav-item">
-                    <a href="?modules=orders&controllers=index&action=list" title="" class="nav-link aha">Danh sách đơn hàng thành công</a>
+                    <a href="?modules=orders&controllers=index&action=list" title="" class="nav-link aha">Danh sách đơn hàng đã xử lý</a>
                 </li>
                 <li class="nav-item">
                     <a href="?modules=customers&controllers=index&action=list" title="" class="nav-link aha">Danh sách khách hàng</a>

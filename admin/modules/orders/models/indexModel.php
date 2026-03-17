@@ -7,12 +7,12 @@ function getAllOrderNo(){
 
 function getAllOrder(){
 
-	return db_fetch_array("SELECT * FROM `tbl_order` WHERE `status` ='Thành công'");
+	return db_fetch_array("SELECT * FROM `tbl_order` WHERE `status` ='Đã xử lý'");
 }
 
 function searchOrderByCode($keyword){
 	$keyword = escape_string($keyword);
-	return db_fetch_array("SELECT * FROM `tbl_order` WHERE `status` ='Thành công' AND `code` LIKE '%$keyword%'");
+	return db_fetch_array("SELECT * FROM `tbl_order` WHERE `status` ='Đã xử lý' AND `code` LIKE '%$keyword%'");
 }
 
 
@@ -31,7 +31,7 @@ function getProductInOrder($id_product){
 }
 
 function updateConfirmOrder($id,$date){
-	$data = ['status' => 'Thành công','date_confirm' => $date];
+	$data = ['status' => 'Đã xử lý','date_confirm' => $date];
 	return db_update("tbl_order", $data, "`id` = '$id'");
 
 }
@@ -84,7 +84,7 @@ function getProductById($id){
 
 
 function updateCancelOrder($id,$date){
-	$data = ['status' => 'Hủy','date_confirm' => $date];
+	$data = ['status' => 'Đã hủy','date_confirm' => $date];
 	return db_update("tbl_order", $data, "`id` = '$id'");
 
 }

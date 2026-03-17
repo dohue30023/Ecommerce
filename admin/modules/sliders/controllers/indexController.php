@@ -31,7 +31,7 @@ function addAction() {
 		}
 
 		// xxử lý ảnh
-		$target_dir = "C:/xampp/htdocs/STORE/public/uploads";
+		$target_dir = "C:/xampp/htdocs/Test/STORE/public/uploads";
 		$target_file = $target_dir . basename($_FILES["image"]["name"]);
 		$uploadOk = 1;
 		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));

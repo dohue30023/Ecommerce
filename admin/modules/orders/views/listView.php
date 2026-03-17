@@ -6,7 +6,7 @@
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
-                    <h3 id="index" class="fl-left">Danh sách đơn hàng thành công</h3>
+                    <h3 id="index" class="fl-left">Danh sách đơn hàng đã xử lý</h3>
                 </div>
             </div>
             <div class="section" id="detail-page">
@@ -62,7 +62,7 @@
                                     <td><span class="tbody-text"><?php  echo $value['total_num_product']; ?></span></td>
                                     <td><span class="tbody-text"><?php  echo $value['total_price']; ?></h3></span>
                                     <td><span class="tbody-text"><?php  echo $value['payment_method']; ?></span></td>
-                                    <td><span class="tbody-text" style="color: green;">Thành công</span></td>
+                                    <td><span class="tbody-text" style="color: green;"><?php  echo $value['status']; ?></span></td>
                                 </tr>
                                
                                 
