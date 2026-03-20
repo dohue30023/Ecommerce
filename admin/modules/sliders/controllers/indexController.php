@@ -31,8 +31,10 @@ function addAction() {
 		}
 
 		// xxử lý ảnh
-		$target_dir = "C:/xampp/htdocs/Test/STORE/public/uploads";
-		$target_file = $target_dir . basename($_FILES["image"]["name"]);
+		$target_dir = "C:/xampp/htdocs/Test/STORE/public/uploads/";
+		$originalName = basename($_FILES["image"]["name"]);
+		$safeName = time() . '_' . uniqid() . '_' . $originalName;
+		$target_file = $target_dir . $safeName;
 		$uploadOk = 1;
 		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
@@ -45,10 +47,7 @@ function addAction() {
 		  }
 		}
 
-		if (file_exists($target_file)) {
-		  $uploadOk = 0;
-		}
-
+		// With a unique name we should not collide, but still validate size/type
 		if ($_FILES["image"]["size"] > 2000000000) {
 		  $uploadOk = 0;
 		}
@@ -61,7 +60,7 @@ function addAction() {
 		if ($uploadOk == 0) {
 		} else {
 		  if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-		    $image ="public/uploads".basename($_FILES["image"]["name"]) ;
+		    $image = "public/uploads/" . $safeName;
 		  } 
 		}
 		if(empty($err)){

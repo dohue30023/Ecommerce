@@ -43,7 +43,9 @@ function addAction() {
 
 		// kiểm tra file ảnh
 			$target_dir = "public/uploads/";
-			$target_file = $target_dir . basename($_FILES["image"]["name"]);
+			$originalName = basename($_FILES["image"]["name"]);
+			$safeName = time() . '_' . uniqid() . '_' . $originalName;
+			$target_file = $target_dir . $safeName;
 			$uploadOk = 1;
 			$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
@@ -54,10 +56,6 @@ function addAction() {
 			  } else {
 			    $uploadOk = 0;
 			  }
-			}
-
-			if (file_exists($target_file)) {
-			  $uploadOk = 0;
 			}
 
 			if ($_FILES["image"]["size"] > 200000000) {
@@ -72,7 +70,7 @@ function addAction() {
 			if ($uploadOk == 0) {
 			} else {
 			  if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-			    $image = $target_dir. basename( $_FILES["image"]["name"]);
+			    $image = $target_dir . $safeName;
 			  }
 			}
 			if(empty($image)){
@@ -205,7 +203,9 @@ function updateAction() {
 
 		//// anh
 		$target_dir = "public/uploads/";
-		$target_file = $target_dir . basename($_FILES["image"]["name"]);
+		$originalName = basename($_FILES["image"]["name"]);
+		$safeName = time() . '_' . uniqid() . '_' . $originalName;
+		$target_file = $target_dir . $safeName;
 		$uploadOk = 1;
 		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
@@ -216,10 +216,6 @@ function updateAction() {
 		  } else {
 		    $uploadOk = 0;
 		  }
-		}
-
-		if (file_exists($target_file)) {
-		  $uploadOk = 0;
 		}
 
 		if ($_FILES["image"]["size"] > 200000000) {
@@ -235,7 +231,7 @@ function updateAction() {
 
 		} else {
 		  if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-		    $image = $target_dir. basename( $_FILES["image"]["name"]);
+		    $image = $target_dir . $safeName;
 		  } else {
 		  }
 		}

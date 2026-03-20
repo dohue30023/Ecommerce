@@ -2,7 +2,7 @@
 
 function getAllOrderNo(){
 
-	return db_fetch_array("SELECT * FROM `tbl_order` WHERE `status` ='Chờ xác nhận'");
+	return db_fetch_array("SELECT * FROM `tbl_order` WHERE `status` ='Chờ xác nhận' ORDER BY create_date DESC");
 }
 
 function getAllOrder(){
@@ -10,9 +10,9 @@ function getAllOrder(){
 	return db_fetch_array("SELECT * FROM `tbl_order` WHERE `status` ='Đã xử lý'");
 }
 
-function searchOrderByCode($keyword){
+function searchOrderNoByCode($keyword){
 	$keyword = escape_string($keyword);
-	return db_fetch_array("SELECT * FROM `tbl_order` WHERE `status` ='Đã xử lý' AND `code` LIKE '%$keyword%'");
+	return db_fetch_array("SELECT * FROM `tbl_order` WHERE `status` ='Chờ xác nhận' AND `code` LIKE '%$keyword%'");
 }
 
 

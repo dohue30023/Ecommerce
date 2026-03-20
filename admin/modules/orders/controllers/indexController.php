@@ -1,98 +1,99 @@
 <?php
 
-function construct() {
+function construct()
+{
 
-    load_model('index');
+	load_model('index');
 }
 
 
 
-function indexAction() {
-
-
-}
+function indexAction() {}
 
 
 
-function listAction() {
+function listAction()
+{
 	$keyword = '';
-	if(!empty($_GET['s'])){
-		$keyword = trim($_GET['s']);
-		$data_tmp = searchOrderByCode($keyword);
-	} else {
-		$data_tmp = getAllOrder();
-	}
+
+	$data_tmp = getAllOrder();
+
 	foreach ($data_tmp as $key => $value) {
 		$data_tmp[$key]['fullname'] = getNameCus($data_tmp[$key]['custom_id']);
 	}
-// phan trang
-	$page =1 ;
-	if(!empty($_GET['page'])){
+	// phan trang
+	$page = 1;
+	if (!empty($_GET['page'])) {
 		$page = $_GET['page'];
-	}else{
-		$page =1;
+	} else {
+		$page = 1;
 	}
-	
+
 	$numProduct = count($data_tmp);
 	$productOnPage = 5;
-	$num = ceil($numProduct/$productOnPage);
-	if(!empty($_GET['page']) && $_GET['page']>$num){
-		$page =$num;
+	$num = ceil($numProduct / $productOnPage);
+	if (!empty($_GET['page']) && $_GET['page'] > $num) {
+		$page = $num;
 	}
 	$start = ($page - 1) * $productOnPage;
-	$res =[];
-	for ($i=$start; $i < $start+$productOnPage; $i++) { 
-		if(isset($data_tmp[$i]))
-        $res[] = $data_tmp[$i];
+	$res = [];
+	for ($i = $start; $i < $start + $productOnPage; $i++) {
+		if (isset($data_tmp[$i]))
+			$res[] = $data_tmp[$i];
 	};
 	$data = [$res, $num, $page, $keyword];
-	load_view('list',$data);
-
-
+	load_view('list', $data);
 }
 
-function listNoAction() {
+function listNoAction()
+{
 
-	$data_tmp = getAllOrderNo();
+	$keyword = '';
+	if (!empty($_GET['s'])) {
+		$keyword = trim($_GET['s']);
+		$data_tmp = searchOrderNoByCode($keyword);
+	} else {
+		$data_tmp = getAllOrderNo();
+	}
 	// echo "<pre>";
 	// print_r($data);
 	foreach ($data_tmp as $key => $value) {
 		$data_tmp[$key]['fullname'] = getNameCus($data_tmp[$key]['custom_id']);
 	}
-	
-// phan trang
-	$page =1;
-	if(!empty($_GET['page'])){
+
+	// phan trang
+	$page = 1;
+	if (!empty($_GET['page'])) {
 		$page = $_GET['page'];
-	}else{
-		$page =1;
+	} else {
+		$page = 1;
 	}
-	
+
 	$numProduct = count($data_tmp);
 	$productOnPage = 5;
-	$num = ceil($numProduct/$productOnPage);
-	if(!empty($_GET['page']) && $_GET['page']>$num){
-		$page =$num;
+	$num = ceil($numProduct / $productOnPage);
+	if (!empty($_GET['page']) && $_GET['page'] > $num) {
+		$page = $num;
 	}
 	$start = ($page - 1) * $productOnPage;
-	$res =[];
-	for ($i=$start; $i < $start+$productOnPage; $i++) { 
-		if(isset($data_tmp[$i]))
-        $res[] = $data_tmp[$i];
+	$res = [];
+	for ($i = $start; $i < $start + $productOnPage; $i++) {
+		if (isset($data_tmp[$i]))
+			$res[] = $data_tmp[$i];
 	};
-	$data = [$res, $num, $page];
-	load_view('listNo',$data);
-
+	$data = [$res, $num, $page, $keyword];
+	load_view('listNo', $data);
 }
 
-function detailAction(){
+function detailAction()
+{
 
 	$id_order = $_GET['id_order'];
 	$data = array();
 	$check = true;
-	$data_order = getAllDetailOrderNo($id_order);// lấy được id order
+	$data_order = getAllDetailOrderNo($id_order); // lấy được id order
 	foreach ($data_order as $key => $value) {
-		
+
 		$id_product = (int)$value['id_product'];
 		$data_product = getProductInOrder($id_product);
 		$data[$key]['sub_total_price'] = $value['sub_total_price'];
@@ -101,35 +102,33 @@ function detailAction(){
 		$data[$key]['image'] = $data_product['image'];
 		$data[$key]['name'] = $data_product['name'];
 		$data[$key]['price'] = $data_product['price'];
-		if($value['qty'] > $data_product['quantity']){
+		if ($value['qty'] > $data_product['quantity']) {
 			$data[$key]['mess'] = "Thiếu hàng";
 			$check = false;
-		}else{
+		} else {
 			$data[$key]['mess'] = "Đủ hàng";
 		}
-
-		
-
 	};
 	$data[count($data)] = $id_order;
 	$data[count($data)] = $check;
 
-	load_view('detail',$data);
+	load_view('detail', $data);
 }
 
 
 
-function confirmAction(){
+function confirmAction()
+{
 
 	$id_order = $_GET['id_order'];
-	$date = date("d/m/Y",time());
-	updateConfirmOrder($id_order,$date);
+	$date = date("d/m/Y", time());
+	updateConfirmOrder($id_order, $date);
 	// update  lại số lượng hàng trong kho
 	$data = getQtyAndIDProductByIdOrder($id_order);
 	foreach ($data as $key => $value) {
 		$id = $value['id_product'];
 		$qty = $value['qty'];
-		updateQtyProduct($id,$qty);
+		updateQtyProduct($id, $qty);
 	}
 
 	///////////////////////////////////////
@@ -138,18 +137,11 @@ function confirmAction(){
 }
 
 
-function cancelAction(){
+function cancelAction()
+{
 
 	$id_order = $_GET['id_order'];
-	$date = date("d/m/Y",time());
-	updateCancelOrder($id_order,$date);
+	$date = date("d/m/Y", time());
+	updateCancelOrder($id_order, $date);
 	header('location:?modules=orders&controller=index&action=listNo');
-
 }
-
-
-
-
-
-
-?>

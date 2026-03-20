@@ -45,7 +45,9 @@ function addAction() {
 
 		// check ảnh (image upload validation)
 			$target_dir = "C:/xampp/htdocs/Test/STORE/public/uploads/";
-			$target_file = $target_dir . basename($_FILES["image"]["name"]);
+			$originalName = basename($_FILES["image"]["name"]);
+			$safeName = time() . '_' . uniqid() . '_' . $originalName;
+			$target_file = $target_dir . $safeName;
 			$uploadOk = 1;
 			$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
@@ -56,11 +58,6 @@ function addAction() {
 				$check = getimagesize($_FILES["image"]["tmp_name"]);
 				if ($check === false) {
 					$errors[] = 'Tập tin không phải là ảnh.';
-					$uploadOk = 0;
-				}
-
-				if (file_exists($target_file)) {
-					$errors[] = 'Ảnh đã tồn tại trên server.';
 					$uploadOk = 0;
 				}
 
@@ -80,7 +77,7 @@ function addAction() {
 				// do nothing here; errors collected
 			} else {
 				if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-					$image = "public/uploads/" . basename($_FILES["image"]["name"]);
+					$image = "public/uploads/" . $safeName;
 				} else {
 					$errors[] = 'Không thể lưu ảnh lên server.';
 				}
